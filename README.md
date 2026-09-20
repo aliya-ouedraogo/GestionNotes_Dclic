@@ -6,14 +6,15 @@ Semaine 6 de la formation DCLIC.
 
 ## Captures d'écran
 
-| Écran | Aperçu |
-|---|---|
-| Connexion | ![Connexion](docs/screenshots/connexion.jpg) |
-| Inscription | ![Inscription](docs/screenshots/inscription.jpg) |
-| Liste des notes | ![Liste des notes](docs/screenshots/liste_notes.jpg) |
-| Ajout | ![Ajout d'une note](docs/screenshots/ajout_note.jpg) |
-| Modification | ![Modif d'une note](docs/screenshots/modif_note.jpg) |
-| Suppression | ![Suppression d'une note](docs/screenshots/suppression.jpg) |
+<p align="center">
+  <img src="docs/screenshots/connexion.jpg" width="180" alt="Connexion" />
+  <img src="docs/screenshots/inscription.jpg" width="180" alt="Inscription" />
+  <img src="docs/screenshots/liste_notes.jpg" width="180" alt="Liste des notes" />
+  <br/>
+  <img src="docs/screenshots/ajout_note.jpg" width="180" alt="Ajout" />
+  <img src="docs/screenshots/modif_note.jpg" width="180" alt="Modification" />
+  <img src="docs/screenshots/suppression.jpg" width="180" alt="Suppression" />
+</p>
 
 ## Diagramme de classes
 
