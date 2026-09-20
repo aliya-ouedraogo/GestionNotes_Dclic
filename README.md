@@ -1,43 +1,28 @@
-# AppNotes — DCLIC Développement Mobile (Niveau Intermédiaire)
+# Application de gestion de notes
 
 Application de gestion de notes développée avec **Flutter** et une base de
 données locale **SQLite** (via `sqflite`), réalisée dans le cadre du projet
 Semaine 6 de la formation DCLIC.
 
-## Sommaire
+## Captures d'écran
 
-1. [Aperçu](#aperçu)
-2. [Fonctionnalités](#fonctionnalités)
-3. [Installation](#installation)
-4. [Utilisation](#utilisation)
-5. [Structure du projet](#structure-du-projet)
-6. [Diagramme de classes](#diagramme-de-classes)
-7. [Choix de conception](#choix-de-conception)
-8. [Dépannage](#dépannage)
-9. [Pistes d'amélioration futures](#pistes-damélioration-futures)
+| Écran | Aperçu |
+|---|---|
+| Connexion | ![Connexion](docs/screenshots/connexion.png) |
+| Inscription | ![Inscription](docs/screenshots/inscription.png) |
+| Liste des notes | ![Liste des notes](docs/screenshots/liste_notes.png) |
+| Ajout | ![Ajout d'une note](docs/screenshots/ajout_note.png) |
+| Modification | ![Modif d'une note](docs/screenshots/modif_note.png) |
+| Suppression | ![Suppression d'une note](docs/screenshots/suppression.png) |
 
-## Aperçu
+## Diagramme de classes
 
-L'application permet à un utilisateur de créer un compte local, de se
-connecter, puis de gérer ses notes (ajout, modification, suppression,
-marquage « terminée ») avec un filtrage par catégorie. Toutes les données
-sont stockées uniquement sur l'appareil, sans aucune connexion réseau.
-
-## Fonctionnalités
-
-- Inscription et connexion locales (sans serveur).
-- Création, modification et suppression de notes (texte, date, importance).
-- Marquage d'une note comme terminée.
-- Filtrage des notes : Toutes / Importantes / Terminées.
-- Messages d'erreur clairs à chaque étape (champs vides, identifiants
-  incorrects, pseudo déjà pris, confirmation de suppression).
-- Persistance complète via SQLite : les notes et les comptes restent
-  disponibles après fermeture de l'application.
+![Diagramme de classes](docs/diagramme_classes.png)
 
 ## Installation
 
 1. Installer Flutter (canal stable) : https://docs.flutter.dev/get-started/install
-2. Récupérer le projet (dossier `lib/`, `assets/` et `pubspec.yaml`) :
+2. Récupérer le projet (dossiers `lib/`, `assets/` et fichier `pubspec.yaml`) :
    ```bash
    flutter create appnotes_dclic
    # puis remplacer le dossier lib/, le dossier assets/ et pubspec.yaml
@@ -51,6 +36,18 @@ sont stockées uniquement sur l'appareil, sans aucune connexion réseau.
    ```bash
    flutter run
    ```
+
+## Fonctionnalités
+
+- Inscription et connexion locales (sans serveur).
+- Création, modification et suppression de notes (texte, date, importance).
+- Marquage d'une note comme terminée.
+- Filtrage des notes : Toutes / Importantes / Terminées.
+- Déconnexion depuis l'écran principal.
+- Messages d'erreur clairs à chaque étape (champs vides, identifiants
+  incorrects, pseudo déjà pris, confirmation de suppression).
+- Persistance complète via SQLite : les notes et les comptes restent
+  disponibles après fermeture de l'application.
 
 ## Utilisation
 
@@ -83,113 +80,9 @@ assets/
   images/
     icone_message.png               Icône des écrans de connexion/inscription
 docs/
-  diagramme_classes.png             Ton diagramme de classes (à ajouter)
-  screenshots/                      Tes captures d'écran (à ajouter)
+  diagramme_classes.png             Diagramme de classes
+  screenshots/                      Captures d'écran
 ```
-
-## Diagramme de classes
-
-![Diagramme de classes](docs/diagramme_classes.png)
-
-*Pour utiliser ton propre diagramme : exporte-le en image (PNG ou JPG)
-depuis ton outil, dépose le fichier dans `docs/diagramme_classes.png`
-(même nom que ci-dessus, ou adapte le chemin dans la ligne `![...]`) — il
-s'affichera alors automatiquement ici, sans rien changer d'autre.*
-
-<details>
-<summary>Diagramme Mermaid généré automatiquement (repli, à garder ou supprimer)</summary>
-
-```mermaid
-classDiagram
-    class Note {
-      +int? id
-      +String text
-      +String date
-      +bool important
-      +bool done
-      +copyWith() Note
-      +toMap() Map
-      +fromMap(Map) Note
-    }
-
-    class DatabaseHelper {
-      +instance DatabaseHelper
-      -Database _db
-      +database Database
-      +login(username, password) bool
-      +register(username, password) bool
-      +insertNote(Note) int
-      +updateNote(Note) int
-      +deleteNote(id) int
-      +getNotes() List~Note~
-    }
-
-    class LoginScreen {
-      -TextEditingController usernameCtrl
-      -TextEditingController passwordCtrl
-      +handleLogin()
-    }
-
-    class RegisterScreen {
-      -TextEditingController usernameCtrl
-      -TextEditingController passwordCtrl
-      +handleRegister()
-    }
-
-    class NotesListScreen {
-      -List~Note~ notes
-      -NoteFilter filter
-      +loadNotes()
-      +addNote()
-      +editNote(Note)
-      +deleteNote(Note)
-      +toggleDone(Note, bool)
-    }
-
-    class NoteTile {
-      +Note note
-      +onEdit()
-      +onDelete()
-      +onToggleDone()
-    }
-
-    class AppColors {
-      +Color primary
-      +Color background
-      +Color card
-      +Color danger
-      +Color textDark
-      +Color textMuted
-    }
-
-    LoginScreen --> DatabaseHelper : utilise
-    RegisterScreen --> DatabaseHelper : utilise
-    NotesListScreen --> DatabaseHelper : utilise
-    DatabaseHelper --> Note : gère
-    NotesListScreen --> NoteTile : affiche *
-    NoteTile --> Note : représente
-    NotesListScreen ..> Note : crée / modifie via dialogues
-    LoginScreen ..> RegisterScreen : navigue vers
-    LoginScreen ..> NotesListScreen : navigue vers
-    RegisterScreen ..> NotesListScreen : navigue vers
-```
-
-</details>
-
-## Captures d'écran
-
-Dépose tes exports dans `docs/screenshots/` avec ces noms (ou adapte les
-chemins ci-dessous à tes propres noms de fichiers) :
-
-| Écran | Aperçu |
-|---|---|
-| Connexion | ![Connexion](docs/screenshots/connexion.png) |
-| Inscription | ![Inscription](docs/screenshots/inscription.png) |
-| Liste des notes | ![Liste des notes](docs/screenshots/liste_notes.png) |
-| Ajout / modification | ![Ajout d'une note](docs/screenshots/ajout_note.png) |
-| Suppression | ![Suppression d'une note](docs/screenshots/suppression.png) |
-
-
 
 ## Choix de conception
 
@@ -243,5 +136,4 @@ chemins ci-dessous à tes propres noms de fichiers) :
   local (question de sécurité) si plusieurs comptes doivent coexister sur un
   même appareil.
 - Rappels/notifications locales à l'approche de la date d'une note.
-- Rester connecté entre deux lancements (via `shared_preferences`), retiré
-  volontairement pour limiter les dépendances du projet.
+
