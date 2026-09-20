@@ -17,7 +17,7 @@ Semaine 6 de la formation DCLIC.
 
 ## Diagramme de classes
 
-![Diagramme de classes](docs/diagramme_classes.png)
+![Diagramme de classes](docs/diagramme_classes.jpg)
 
 ## Installation
 
