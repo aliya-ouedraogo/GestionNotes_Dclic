@@ -8,12 +8,12 @@ Semaine 6 de la formation DCLIC.
 
 | Écran | Aperçu |
 |---|---|
-| Connexion | ![Connexion](docs/screenshots/connexion.png) |
-| Inscription | ![Inscription](docs/screenshots/inscription.png) |
-| Liste des notes | ![Liste des notes](docs/screenshots/liste_notes.png) |
-| Ajout | ![Ajout d'une note](docs/screenshots/ajout_note.png) |
-| Modification | ![Modif d'une note](docs/screenshots/modif_note.png) |
-| Suppression | ![Suppression d'une note](docs/screenshots/suppression.png) |
+| Connexion | ![Connexion](docs/screenshots/connexion.jpg) |
+| Inscription | ![Inscription](docs/screenshots/inscription.jpg) |
+| Liste des notes | ![Liste des notes](docs/screenshots/liste_notes.jpg) |
+| Ajout | ![Ajout d'une note](docs/screenshots/ajout_note.jpg) |
+| Modification | ![Modif d'une note](docs/screenshots/modif_note.jpg) |
+| Suppression | ![Suppression d'une note](docs/screenshots/suppression.jpg) |
 
 ## Diagramme de classes
 
@@ -78,9 +78,9 @@ lib/
     dialogue_suppression.dart       Modale de confirmation de suppression
 assets/
   images/
-    icone_message.png               Icône des écrans de connexion/inscription
+    icone_message.jpg               Icône des écrans de connexion/inscription
 docs/
-  diagramme_classes.png             Diagramme de classes
+  diagramme_classes.jpg             Diagramme de classes
   screenshots/                      Captures d'écran
 ```
 
@@ -96,7 +96,7 @@ docs/
   volontairement peu précis (« pseudo ou mot de passe incorrect ») pour ne
   pas révéler si c'est le pseudo qui est inconnu ou le mot de passe qui est
   faux.
-- **Icône de connexion** : `assets/images/icone_message.png` reprend
+- **Icône de connexion** : `assets/images/icone_message.jpg` reprend
   l'icône exacte de la maquette Figma (pas une icône Material générée),
   affichée avec `BoxFit.contain` dans un cadre de taille fixe pour que ses
   proportions d'origine soient toujours respectées.
@@ -120,7 +120,7 @@ docs/
 3. Vérifier le nom exact du fichier en terminal (`ls assets/images` sous
    Mac/Linux, `dir assets\images` sous Windows). Piège fréquent : Windows
    masque les extensions connues, un fichier renommé peut donc s'appeler
-   en réalité `icone_message.png.png` sans que ça se voie dans
+   en réalité `icone_message.jpg.jpg` sans que ça se voie dans
    l'explorateur.
 4. Après toute modification de `pubspec.yaml` ou ajout d'un nouvel asset,
    un hot reload ne suffit pas : lancer `flutter pub get`, puis arrêter
